@@ -5,6 +5,30 @@ const HERO_IMG = 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e6
 const TABLE_IMG = 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/fb66d10a-b0a7-4231-9bde-2bd3a0c95657.jpg';
 const CRAFT_IMG = 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/09f48eb8-312b-4bdb-a625-248941850ab5.jpg';
 
+const FEATURED_PRODUCTS = [
+  {
+    title: 'Кресло «Аякс»',
+    desc: 'Уютное и утончённое кресло с мягкой обивкой и изящными деревянными ножками. Идеально для чтения и отдыха.',
+    price: '21 490 ₽',
+    tag: 'Уют',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/7e84ba33-fe0c-4dfb-a0f3-890d8d64d655.jpg',
+  },
+  {
+    title: 'Матрас «Парабола»',
+    desc: 'Современный минималистичный матрас с эффектом памяти. Повторяет контуры тела, снимает нагрузку с позвоночника.',
+    price: '81 990 ₽',
+    tag: 'Новинка',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/43a38224-2841-4ae3-8613-b3b285a017ed.jpg',
+  },
+  {
+    title: 'Диван «Три богатыря»',
+    desc: 'Массивный винтажный диван с каркасом из тёмного дерева. Благородная обивка и внушительные формы создают характер.',
+    price: '131 450 ₽',
+    tag: 'Премиум',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/5f00a75d-11a6-4b2b-9ffd-984760c7752c.jpg',
+  },
+];
+
 const NAV_ITEMS = [
   { id: 'home', label: 'Главная' },
   { id: 'catalog', label: 'Каталог' },
@@ -183,6 +207,40 @@ const Index = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Product cards */}
+          <div className="mt-12">
+            <h3 className="font-display text-2xl md:text-3xl font-light mb-8" style={{ color: 'var(--dark-wood)' }}>
+              Избранные товары
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {FEATURED_PRODUCTS.map((p) => (
+                <div key={p.title} className="hover-lift rounded-xl overflow-hidden border" style={{ backgroundColor: 'var(--cream)', borderColor: 'var(--sand)' }}>
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full font-body text-xs font-medium"
+                      style={{ backgroundColor: 'var(--warm-brown)', color: 'var(--cream)' }}>
+                      {p.tag}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h4 className="font-display text-xl font-medium mb-2" style={{ color: 'var(--dark-wood)' }}>{p.title}</h4>
+                    <p className="font-body text-sm leading-relaxed mb-4" style={{ color: 'var(--olive)' }}>{p.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-2xl font-semibold" style={{ color: 'var(--warm-brown)' }}>{p.price}</span>
+                      <button
+                        onClick={() => scrollTo('contacts')}
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-lg font-body text-sm font-medium transition-all hover:opacity-90"
+                        style={{ backgroundColor: 'var(--terracotta)', color: 'var(--cream)' }}
+                      >
+                        Заказать <Icon name="ArrowRight" size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12 rounded-xl overflow-hidden grid md:grid-cols-2 shadow-lg">
