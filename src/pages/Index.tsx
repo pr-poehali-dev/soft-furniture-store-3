@@ -69,6 +69,27 @@ const ABOUT_POINTS = [
   { num: '100%', label: 'натуральные материалы' },
 ];
 
+const TEAM = [
+  {
+    name: 'Дмитрий Осинов',
+    role: 'Работник склада',
+    desc: 'Отвечает за приём, хранение и отгрузку товара. Знает каждую позицию на складе — бережёт мебель как собственную.',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/f8b61a5d-c367-4a37-b51f-ef0d8c5536f0.jpg',
+  },
+  {
+    name: 'Екатерина Пуф',
+    role: 'Менеджер торгового зала',
+    desc: 'Помогает покупателям с выбором мебели, консультирует по материалам и стилям. Превращает визит в удовольствие.',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/ef2fb59d-69c2-4897-aa07-c255d6ac9adb.jpg',
+  },
+  {
+    name: 'Артём Стеклов',
+    role: 'Конструктор-технолог',
+    desc: 'Разрабатывает конструкции мебели и следит за технологическим процессом производства. За каждым изделием — его точный расчёт.',
+    img: 'https://cdn.poehali.dev/projects/2c2f7bca-64bc-4b28-aff2-478e621513c7/files/3df221d8-4e64-4561-a038-7943252ffb13.jpg',
+  },
+];
+
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -356,6 +377,28 @@ const Index = () => {
                 </p>
                 <p className="font-body text-xs mt-3" style={{ color: 'var(--sand)', opacity: 0.7 }}>— Михаил, основатель ДомоВита</p>
               </div>
+            </div>
+          </div>
+
+          {/* Team */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <p className="font-body text-xs tracking-widest uppercase mb-3" style={{ color: 'var(--olive)' }}>Люди бренда</p>
+              <h3 className="font-display text-3xl md:text-4xl font-light" style={{ color: 'var(--dark-wood)' }}>Наша команда</h3>
+              <div className="mt-4 mx-auto w-16 h-px" style={{ backgroundColor: 'var(--terracotta)' }} />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {TEAM.map((member) => (
+                <div key={member.name} className="text-center hover-lift">
+                  <div className="relative mx-auto mb-5 w-40 h-40 rounded-full overflow-hidden border-4 shadow-lg"
+                    style={{ borderColor: 'var(--sand)' }}>
+                    <img src={member.img} alt={member.name} className="w-full h-full object-cover object-top" />
+                  </div>
+                  <h4 className="font-display text-xl font-medium" style={{ color: 'var(--dark-wood)' }}>{member.name}</h4>
+                  <p className="font-body text-xs tracking-wide uppercase mt-1 mb-3" style={{ color: 'var(--terracotta)' }}>{member.role}</p>
+                  <p className="font-body text-sm leading-relaxed max-w-xs mx-auto" style={{ color: 'var(--olive)' }}>{member.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
